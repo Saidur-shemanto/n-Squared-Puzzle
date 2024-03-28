@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameBlocks {
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border: 2px solid black;
+
+}
+
+.gameBlocks>div {
+    background-color: aqua;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

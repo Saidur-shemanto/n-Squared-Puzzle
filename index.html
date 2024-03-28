@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <h1>N-Squared Puzzle Game</h1>
+
+    </header>
+    <main>
+        <form action="">
+            <h3>Choose a row size:</h3>
+            <input type="radio" name="blocksize" id="three" checked>
+            <label for="three">3x3</label>
+            <input type="radio" name="blocksize" id="four">
+            <label for="four">4x4</label>
+            <input type="radio" name="blocksize" id="five">
+            <label for="five">5x5</label>
+            <input type="radio" name="blocksize" id="six">
+            <label for="six">6x6</label>
+
+            <input type="submit" value="Submit">
+            <input type="button" value="Randomize" id="randomize">
+            <input type="button" value="Solve Puzzle" id="solvePuzzle">
+        </form>
+        <br>
+        <div class="gameBlocks">
+            <div class="three" id="1"></div>
+            <div class="three" id="2"></div>
+            <div class="three" id="3"></div>
+            <div class="three" id="4"></div>
+            <div class="three" id="5"></div>
+            <div class="three" id="6"></div>
+            <div class="three" id="7"></div>
+            <div class="three" id="8"></div>
+            <div class="three" id="blank">blank</div>
+            <!-- <div class="four" id="9"></div>
+            <div class="four" id="10"></div>
+            <div class="four" id="11"></div>
+            <div class="four" id="12"></div>
+            <div class="four" id="13"></div>
+            <div class="four" id="14"></div>
+            <div class="four" id="15"></div> -->
+
+        </div>
+
+
+    </main>
+    <footer>
+
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

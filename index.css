@@ -5,12 +5,13 @@ body {
 }
 
 .gameBlocks {
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 600px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     border: 2px solid black;
+    visibility: hidden;
 
 }
 

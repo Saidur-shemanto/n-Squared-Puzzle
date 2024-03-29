@@ -64,36 +64,7 @@ function checkNeighbour() {
 
     let clickBlock = document.getElementById(this.id)
     if (clickBlock.innerText === "blank") {
-        if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null) {
-            document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red"
-
-        }
-        if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null) {
-            document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red"
-
-        }
-        if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null) {
-            document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red"
-
-        }
-        if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null) {
-            document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red"
-
-        }
-
-
-
-
-
-    }
-    if (blockvar === 0 && blockid === 0 && clickBlock.innerText === "blank") {
-        blockid = clickBlock
-        blockvar = clickBlock.innerText
-
-
-
-    } else {
-        if (clickBlock.style.backgroundColor === "red") {
+        if (clickBlock.style.backgroundColor === "red" && blockvar !== 0 && blockid !== 0) {
             let temp = clickBlock.innerText
             clickBlock.innerText = blockvar
             blockid.innerText = temp
@@ -104,20 +75,77 @@ function checkNeighbour() {
 
             }
 
+        } else {
+            blockvar = clickBlock.innerText
+            blockid = clickBlock
+            if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null) {
+                document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red";
 
+            }
+            if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null) {
+                document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red";
+
+            }
+            if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null) {
+                document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red";
+
+            }
+            if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null) {
+                document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red";
+
+            }
         }
 
 
+
+
+
+    } else if (blockvar === 0 && blockid === 0) {
+        if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null && document.getElementById((parseInt(clickBlock.id) + 1).toString()).innerText === "blank") {
+            console.log(document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor)
+            document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red";
+            blockid = clickBlock
+            blockvar = clickBlock.innerText
+
+
+        }
+        else if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null && document.getElementById((parseInt(clickBlock.id) - 1).toString()).innerText === "blank") {
+            console.log(document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor)
+            document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red";
+            blockid = clickBlock
+            blockvar = clickBlock.innerText
+
+
+        }
+        else if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null && document.getElementById((parseInt(clickBlock.id) + 10).toString()).innerText === "blank") {
+            console.log(document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor)
+            document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red";
+            blockid = clickBlock
+            blockvar = clickBlock.innerText
+
+
+        }
+        else if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null && document.getElementById((parseInt(clickBlock.id) - 10).toString()).innerText === "blank") {
+            console.log(document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor)
+            document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red"
+            blockid = clickBlock
+            blockvar = clickBlock.innerText
+
+
+        }
+
+    } else {
+        let temp = clickBlock.innerText
+        clickBlock.innerText = blockvar
+        blockid.innerText = temp
+        blockid = 0
+        blockvar = 0
+        for (let i of blocks) {
+            i.style.backgroundColor = "aqua";
+
+        }
+
     }
-
-
-
-    // let blockValue = clickBlock.innerText
-    // console.log('nigga' + blockValue)
-
-
-    // clickBlock.style.backgroundColor = "green";
-
 
 
 

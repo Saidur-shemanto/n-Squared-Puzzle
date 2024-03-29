@@ -63,11 +63,13 @@ let blockid = 0
 function checkNeighbour() {
 
     let clickBlock = document.getElementById(this.id)
+
     if (clickBlock.innerText === "blank") {
         if (clickBlock.style.backgroundColor === "red" && blockvar !== 0 && blockid !== 0) {
             let temp = clickBlock.innerText
             clickBlock.innerText = blockvar
             blockid.innerText = temp
+            blockid.style.removeProperty('box-shadow');
             blockid = 0
             blockvar = 0
             for (let i of blocks) {
@@ -76,6 +78,7 @@ function checkNeighbour() {
             }
 
         } else {
+            clickBlock.style.boxShadow = "5px 5px 10px black";
             blockvar = clickBlock.innerText
             blockid = clickBlock
             if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null) {
@@ -103,6 +106,7 @@ function checkNeighbour() {
     } else if (blockvar === 0 && blockid === 0) {
         if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null && document.getElementById((parseInt(clickBlock.id) + 1).toString()).innerText === "blank") {
             console.log(document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor)
+            clickBlock.style.boxShadow = "5px 5px 10px black";
             document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red";
             blockid = clickBlock
             blockvar = clickBlock.innerText
@@ -111,6 +115,7 @@ function checkNeighbour() {
         }
         else if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null && document.getElementById((parseInt(clickBlock.id) - 1).toString()).innerText === "blank") {
             console.log(document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor)
+            clickBlock.style.boxShadow = "5px 5px 10px black";
             document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red";
             blockid = clickBlock
             blockvar = clickBlock.innerText
@@ -119,6 +124,7 @@ function checkNeighbour() {
         }
         else if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null && document.getElementById((parseInt(clickBlock.id) + 10).toString()).innerText === "blank") {
             console.log(document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor)
+            clickBlock.style.boxShadow = "5px 5px 10px black";
             document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red";
             blockid = clickBlock
             blockvar = clickBlock.innerText
@@ -127,6 +133,7 @@ function checkNeighbour() {
         }
         else if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null && document.getElementById((parseInt(clickBlock.id) - 10).toString()).innerText === "blank") {
             console.log(document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor)
+            clickBlock.style.boxShadow = "5px 5px 10px black";
             document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red"
             blockid = clickBlock
             blockvar = clickBlock.innerText
@@ -134,10 +141,12 @@ function checkNeighbour() {
 
         }
 
-    } else {
+    }
+    else if (blockid !== 0 && blockvar !== 0 && clickBlock.style.backgroundColor == "red") {
         let temp = clickBlock.innerText
         clickBlock.innerText = blockvar
         blockid.innerText = temp
+        blockid.style.removeProperty("box-shadow");
         blockid = 0
         blockvar = 0
         for (let i of blocks) {

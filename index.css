@@ -16,9 +16,19 @@ body {
 }
 
 .gameBlocks>div {
-    background-color: aqua;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.three,
+.four {
+    background-color: aqua;
+
+}
+
+.blank {
+    background-color: white;
+
 }

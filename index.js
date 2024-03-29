@@ -2,6 +2,7 @@ let blocks = document.getElementsByClassName('gameBlocks')[0].getElementsByTagNa
 for (let i of blocks) {
     i.addEventListener('click', checkNeighbour)
 }
+
 const equalsCheck = (a, b) =>
     a.length === b.length &&
     a.every((v, i) => v === b[i]);
@@ -73,7 +74,13 @@ function checkNeighbour() {
             blockid = 0
             blockvar = 0
             for (let i of blocks) {
-                i.style.backgroundColor = "aqua";
+                if (i.innerText === "blank") {
+                    i.style.backgroundColor = "white";
+                } else {
+                    i.style.backgroundColor = "aqua";
+
+                }
+
 
             }
 
@@ -150,7 +157,13 @@ function checkNeighbour() {
         blockid = 0
         blockvar = 0
         for (let i of blocks) {
-            i.style.backgroundColor = "aqua";
+            if (i.innerText === "blank") {
+                i.style.backgroundColor = "white";
+            } else {
+                i.style.backgroundColor = "aqua";
+
+            }
+
 
         }
 

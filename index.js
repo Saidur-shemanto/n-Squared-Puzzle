@@ -10,6 +10,8 @@ let solCount = 1
 let randlist = []
 let checkResult = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'blank']
 let getResult = []
+let blockvar = 0
+let blockid = 0
 let solveClick = document.getElementById('solvePuzzle')
 let randClick = document.getElementById('randomize')
 let puzzleVisibile = document.getElementById("fourButton")
@@ -17,7 +19,28 @@ randClick.addEventListener('click', randomFunc)
 solveClick.addEventListener('click', posFunction)
 puzzleVisibile.addEventListener('click', visibleBlock)
 function visibleBlock() {
-    console.log(document.getElementsByClassName("gameBlocks")[0].style.visibility)
+    // let selectedSize = document.getElementsByName("blocksize")
+    // for (let i of selectedSize) {
+    //     console.log(i.checked, i.labels[0])
+    //     if (i.checked && i.labels[0].innerText === '3x3') {
+
+    //         let tempElement = document.getElementsByClassName("four")
+
+    //         for (let j of tempElement) {
+    //             console.log(j.style.display)
+
+    //             j.style.display = "none";
+
+
+    //         }
+    //         document.getElementsByClassName("gameBlocks")[0].setAttribute('style',
+    //             'grid-template-columns: repeat(' + 3 + ', 1fr)');
+
+
+
+
+    //     }
+    // }
     document.getElementsByClassName("gameBlocks")[0].style.visibility = 'visible';
 }
 function randomFunc() {
@@ -38,11 +61,14 @@ function randomFunc() {
     blocks[lastpos + 1].innerText = 'blank'
 
 
+
+
 }
 function posFunction() {
     let lastpos;
     for (let i = 0; i < blocks.length - 1; i++) {
         blocks[i].innerText = solCount
+        blocks[i].style.backgroundColor = 'aqua';
         getResult.push(solCount)
         lastpos = i
         solCount++
@@ -50,6 +76,7 @@ function posFunction() {
 
     }
     blocks[lastpos + 1].innerText = 'blank'
+    blocks[lastpos + 1].style.backgroundColor = "white";
     getResult.push("blank")
     solCount = 1
     console.log(typeof getResult, typeof checkResult)
@@ -59,52 +86,50 @@ function posFunction() {
         console.log('nigga')
     }
 }
-let blockvar = 0
-let blockid = 0
 function checkNeighbour() {
 
     let clickBlock = document.getElementById(this.id)
 
-    if (clickBlock.innerText === "blank") {
-        if (clickBlock.style.backgroundColor === "red" && blockvar !== 0 && blockid !== 0) {
-            let temp = clickBlock.innerText
-            clickBlock.innerText = blockvar
-            blockid.innerText = temp
-            blockid.style.removeProperty('box-shadow');
-            blockid = 0
-            blockvar = 0
-            for (let i of blocks) {
-                if (i.innerText === "blank") {
-                    i.style.backgroundColor = "white";
-                } else {
-                    i.style.backgroundColor = "aqua";
+    if (clickBlock.innerText === "blank" && clickBlock.style.backgroundColor === "red" && blockvar !== 0 && blockid !== 0) {
 
-                }
-
+        let temp = clickBlock.innerText
+        clickBlock.innerText = blockvar
+        blockid.innerText = temp
+        blockid.style.removeProperty('box-shadow');
+        blockid = 0
+        blockvar = 0
+        for (let i of blocks) {
+            if (i.innerText === "blank") {
+                i.style.backgroundColor = "white";
+            } else {
+                i.style.backgroundColor = "aqua";
 
             }
 
-        } else {
-            clickBlock.style.boxShadow = "5px 5px 10px black";
-            blockvar = clickBlock.innerText
-            blockid = clickBlock
-            if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null) {
-                document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red";
 
-            }
-            if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null) {
-                document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red";
-
-            }
-            if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null) {
-                document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red";
-
-            }
-            if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null) {
-                document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red";
-
-            }
         }
+
+        // } else {
+        //     clickBlock.style.boxShadow = "5px 5px 10px black";
+        //     blockvar = clickBlock.innerText
+        //     blockid = clickBlock
+        //     if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null) {
+        //         document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red";
+
+        //     }
+        //     if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null) {
+        //         document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red";
+
+        //     }
+        //     if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null) {
+        //         document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red";
+
+        //     }
+        //     if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null) {
+        //         document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red";
+
+        //     }
+        // }
 
 
 

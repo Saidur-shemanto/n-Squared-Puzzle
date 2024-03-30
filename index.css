@@ -32,3 +32,14 @@ body {
     background-color: white;
 
 }
+
+#hurray {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    top: 20px
+}
+
+.formP {
+    position: relative;
+}

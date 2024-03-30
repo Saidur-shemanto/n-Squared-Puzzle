@@ -14,22 +14,31 @@
 
     </header>
     <main>
-        <form action="">
-            <h3>Choose a row size:</h3>
-            <input type="radio" name="blocksize" id="threeX">
-            <label for="threeX">3x3</label>
-            <input type="radio" name="blocksize" id="fourX" checked>
-            <label for="fourX">4x4</label>
-            <!-- <input type="radio" name="blocksize" id="five">
-            <label for="five">5x5</label>
-            <input type="radio" name="blocksize" id="six">
-            <label for="six">6x6</label> -->
+        <section class="formP">
+            <form action="" id="form">
+                <h3>Choose a row size:</h3>
+                <input type="radio" name="blocksize" id="threeX">
+                <label for="threeX">3x3</label>
+                <input type="radio" name="blocksize" id="fourX" checked>
+                <label for="fourX">4x4</label>
+                <!-- <input type="radio" name="blocksize" id="five">
+                <label for="five">5x5</label>
+                <input type="radio" name="blocksize" id="six">
+                <label for="six">6x6</label> -->
 
-            <input type="button" value="Submit" id="fourButton">
-            <input type="button" value="Randomize" id="randomize">
-            <input type="button" value="Solve Puzzle" id="solvePuzzle">
-        </form>
+                <input type="button" value="Submit" id="fourButton">
+                <input type="button" value="Randomize" id="randomize">
+                <input type="button" value="Solve Puzzle" id="solvePuzzle">
+
+            </form>
+            <div id="hurray">
+                <p>HURRAY YOU HAVE WON</p> <button id="restartButt">restart</button>
+            </div>
+
+        </section>
+
         <br>
+
         <div class="gameBlocks">
             <div class="three" id="10"></div>
             <div class="three" id="11"></div>

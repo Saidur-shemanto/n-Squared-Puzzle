@@ -1,4 +1,5 @@
 let blocks = document.getElementsByClassName('gameBlocks')[0].getElementsByTagName('div')
+console.log(typeof blocks)
 for (let i of blocks) {
     i.addEventListener('click', checkNeighbour)
 }
@@ -6,59 +7,98 @@ for (let i of blocks) {
 const equalsCheck = (a, b) =>
     a.length === b.length &&
     a.every((v, i) => v === b[i]);
+
+function shuffleArray(array) {
+    let len = array.length,
+        currentIndex;
+    for (currentIndex = len - 1; currentIndex > 0; currentIndex--) {
+        let randIndex = Math.floor(Math.random() * (currentIndex + 1));
+        const temp = array[currentIndex];
+        array[currentIndex] = array[randIndex];
+        array[randIndex] = temp;
+    }
+    return array
+}
 let solCount = 1
 let randlist = []
 let checkResult = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'blank']
 let getResult = []
 let blockvar = 0
 let blockid = 0
+
 let solveClick = document.getElementById('solvePuzzle')
 let randClick = document.getElementById('randomize')
 let puzzleVisibile = document.getElementById("fourButton")
+let restartButton = document.getElementById("restartButt")
 randClick.addEventListener('click', randomFunc)
 solveClick.addEventListener('click', posFunction)
 puzzleVisibile.addEventListener('click', visibleBlock)
+restartButton.addEventListener("click", restartDisplay)
+function restartDisplay() {
+    window.location = "/"
+}
 function visibleBlock() {
-    // let selectedSize = document.getElementsByName("blocksize")
-    // for (let i of selectedSize) {
-    //     console.log(i.checked, i.labels[0])
-    //     if (i.checked && i.labels[0].innerText === '3x3') {
-
-    //         let tempElement = document.getElementsByClassName("four")
-
-    //         for (let j of tempElement) {
-    //             console.log(j.style.display)
-
-    //             j.style.display = "none";
-
-
-    //         }
-    //         document.getElementsByClassName("gameBlocks")[0].setAttribute('style',
-    //             'grid-template-columns: repeat(' + 3 + ', 1fr)');
+    let selectedSize = document.getElementsByName("blocksize")
+    for (let i of selectedSize) {
+        console.log(i.checked, i.labels[0])
+        let tempElement = document.getElementsByClassName("four")
+        if (i.checked && i.labels[0].innerText === '3x3') {
 
 
 
+            for (let j of tempElement) {
+                console.log(j.style.display)
 
-    //     }
-    // }
+                j.style.display = "none";
+
+
+            }
+            document.getElementsByClassName("gameBlocks")[0].setAttribute('style',
+                'grid-template-columns: repeat(' + 3 + ', 1fr)');
+
+
+
+
+        } else if (i.checked && i.labels[0].innerText === '4x4') {
+            for (let i of tempElement) {
+                i.style.display = "flex";
+
+
+
+
+            }
+            document.getElementsByClassName("gameBlocks")[0].setAttribute('style',
+                'grid-template-columns: repeat(' + 4 + ', 1fr)');
+        }
+    }
     document.getElementsByClassName("gameBlocks")[0].style.visibility = 'visible';
 }
 function randomFunc() {
+
     let lastpos;
-    for (let i = 0; i < blocks.length - 1; i++) {
-        let count = Math.ceil(Math.random() * 15)
-        while (randlist.includes(count)) {
-            count = Math.ceil(Math.random() * 15)
+    let blockValue = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'blank'])
+    console.log(blockValue)
+    for (let i = 0; i < blocks.length; i++) {
+
+
+
+
+        blocks[i].innerText = blockValue[i]
+
+        if (blocks[i].innerText === "blank") {
+            blocks[i].style.backgroundColor = "white";
+        } else {
+            blocks[i].style.backgroundColor = "aqua";
+
         }
 
-        blocks[i].innerText = count
-        randlist.push(count)
-        lastpos = i
+
+
+
 
 
     }
-    randlist = []
-    blocks[lastpos + 1].innerText = 'blank'
+
 
 
 
@@ -81,7 +121,9 @@ function posFunction() {
     solCount = 1
     console.log(typeof getResult, typeof checkResult)
     if (equalsCheck(checkResult, getResult)) {
-        console.log('Hurray')
+        document.getElementById("hurray").style.visibility = "visible";
+        document.getElementById("form").style.visibility = "hidden";
+        console.log(document.getElementById("form"))
     } else {
         console.log('nigga')
     }
@@ -109,27 +151,7 @@ function checkNeighbour() {
 
         }
 
-        // } else {
-        //     clickBlock.style.boxShadow = "5px 5px 10px black";
-        //     blockvar = clickBlock.innerText
-        //     blockid = clickBlock
-        //     if (document.getElementById((parseInt(clickBlock.id) + 1).toString()) !== null) {
-        //         document.getElementById((parseInt(clickBlock.id) + 1).toString()).style.backgroundColor = "red";
 
-        //     }
-        //     if (document.getElementById((parseInt(clickBlock.id) - 1).toString()) !== null) {
-        //         document.getElementById((parseInt(clickBlock.id) - 1).toString()).style.backgroundColor = "red";
-
-        //     }
-        //     if (document.getElementById((parseInt(clickBlock.id) + 10).toString()) !== null) {
-        //         document.getElementById((parseInt(clickBlock.id) + 10).toString()).style.backgroundColor = "red";
-
-        //     }
-        //     if (document.getElementById((parseInt(clickBlock.id) - 10).toString()) !== null) {
-        //         document.getElementById((parseInt(clickBlock.id) - 10).toString()).style.backgroundColor = "red";
-
-        //     }
-        // }
 
 
 

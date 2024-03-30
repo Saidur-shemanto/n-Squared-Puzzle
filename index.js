@@ -38,7 +38,7 @@ solveClick.addEventListener('click', posFunction)
 puzzleVisibile.addEventListener('click', visibleBlock)
 restartButton.addEventListener("click", restartDisplay)
 function restartDisplay() {
-    window.location = "/"
+    window.location.reload
 }
 function visibleBlock() {
     let selectedSize = document.getElementsByName("blocksize")

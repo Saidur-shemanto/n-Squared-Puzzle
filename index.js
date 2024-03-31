@@ -35,26 +35,27 @@ let puzzleVisibile = document.getElementById("fourButton")
 let restartButton = document.getElementById("restartButt")
 randClick.addEventListener('click', randomFunc)
 solveClick.addEventListener('click', posFunction)
-puzzleVisibile.addEventListener('click', visibleBlock)
+puzzleVisibile.addEventListener('click', moveTile)
 restartButton.addEventListener("click", restartDisplay)
 function restartDisplay() {
     window.location.reload();
 }
-function visibleBlock() {
+function moveTile() {
     let selectedSize = document.getElementsByName("blocksize")
+
     for (let i of selectedSize) {
         let tempElement = document.getElementsByClassName("four")
         if (i.checked && i.labels[0].innerText === '3x3') {
             blockid = 0
             blockvar = 0
             blocks = document.querySelectorAll(".three")
-            blockValue = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 'blank'])
+            blockValue = [1, 2, 3, 4, 5, 6, 7, 8, 'blank']
             for (let i = 0; i < blocks.length; i++) {
 
                 blocks[i].id = threeId[i]
                 console.log(blocks[i], threeId[i])
                 blocks[i].innerText = ''
-                blocks[i].style.backgroundColor = "aqua"
+
                 blocks[i].style.boxShadow = ""
 
 
@@ -77,6 +78,7 @@ function visibleBlock() {
             }
             document.getElementsByClassName("gameBlocks")[0].setAttribute('style',
                 'grid-template-columns: repeat(' + 3 + ', 1fr)');
+            randomFunc();
             document.getElementsByClassName("gameBlocks")[0].style.visibility = 'visible';
 
 
@@ -86,12 +88,12 @@ function visibleBlock() {
             blockid = 0
             blockvar = 0
             blocks = document.querySelectorAll(".three, .four")
-            blockValue = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'blank'])
+            blockValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'blank']
             console.log(blocks.length, fourId.length)
             for (let i = 0; i < blocks.length; i++) {
                 blocks[i].id = fourId[i]
                 blocks[i].innerText = ''
-                blocks[i].style.backgroundColor = "aqua"
+
                 blocks[i].style.boxShadow = ""
 
             }
@@ -104,6 +106,7 @@ function visibleBlock() {
             }
             document.getElementsByClassName("gameBlocks")[0].setAttribute('style',
                 'grid-template-columns: repeat(' + 4 + ', 1fr)');
+            randomFunc();
             document.getElementsByClassName("gameBlocks")[0].style.visibility = 'visible';
         }
     }
@@ -111,17 +114,16 @@ function visibleBlock() {
 }
 function randomFunc() {
 
-    let lastpos;
+
+    blockValue = shuffleArray(blockValue)
+    console.log(blockValue)
 
 
     for (let i = 0; i < blocks.length; i++) {
 
-
-
-
         blocks[i].innerText = blockValue[i]
 
-        if (blocks[i].innerText === "blank") {
+        if (blockValue[i] === "blank") {
             blocks[i].style.backgroundColor = "white";
         } else {
             blocks[i].style.backgroundColor = "aqua";

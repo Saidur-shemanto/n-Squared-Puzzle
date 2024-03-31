@@ -22,16 +22,13 @@ body {
     justify-content: center;
 }
 
-.three,
+/* .three,
 .four {
     background-color: aqua;
 
-}
+} */
 
-.blank {
-    background-color: white;
 
-}
 
 #hurray {
     visibility: hidden;
